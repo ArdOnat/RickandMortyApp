@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterListViewController" customModule="ArdaOnatOBSSCase" customModuleProvider="target">
+            <connections>
+                <outlet property="gridCollectionView" destination="4Dw-Ix-7lQ" id="ZZB-OQ-afT"/>
+                <outlet property="listTableView" destination="17B-wo-TOR" id="PM8-6c-Opu"/>
+                <outlet property="searchBar" destination="cV5-69-2wo" id="AUM-OS-SzR"/>
+                <outlet property="segmentedControl" destination="bsB-4l-tJS" id="Ni8-7u-3Hx"/>
+                <outlet property="statusSegmentedControl" destination="9aw-yR-kGU" id="OSy-JJ-E6b"/>
+                <outlet property="titleLabel" destination="Swh-2V-v1a" id="D0M-Cu-MtP"/>
+                <outlet property="view" destination="LIk-cr-3Ka" id="lud-mN-OLC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LIk-cr-3Ka">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick and Morty Character List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swh-2V-v1a">
+                    <rect key="frame" x="82" y="16" width="211" height="20"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bsB-4l-tJS">
+                    <rect key="frame" x="8" y="116" width="359" height="32"/>
+                    <segments>
+                        <segment title="List View"/>
+                        <segment title="Grid View"/>
+                    </segments>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="17B-wo-TOR">
+                    <rect key="frame" x="0.0" y="202" width="375" height="465"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Dw-Ix-7lQ">
+                    <rect key="frame" x="0.0" y="202" width="375" height="465"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="yG3-6k-Zgg">
+                        <size key="itemSize" width="175" height="250"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9aw-yR-kGU">
+                    <rect key="frame" x="8" y="155" width="359" height="32"/>
+                    <segments>
+                        <segment title="No Filter"/>
+                        <segment title="Alive"/>
+                        <segment title="Dead"/>
+                        <segment title="Unknown"/>
+                    </segments>
+                </segmentedControl>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cV5-69-2wo">
+                    <rect key="frame" x="8" y="52" width="359" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="x4X-Gg-f8T"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="4Dw-Ix-7lQ" firstAttribute="trailing" secondItem="x4X-Gg-f8T" secondAttribute="trailing" id="1iX-b1-6GY"/>
+                <constraint firstItem="17B-wo-TOR" firstAttribute="centerX" secondItem="4Dw-Ix-7lQ" secondAttribute="centerX" id="36G-LG-rFG"/>
+                <constraint firstItem="x4X-Gg-f8T" firstAttribute="trailing" secondItem="9aw-yR-kGU" secondAttribute="trailing" constant="8" id="3Bd-46-LYF"/>
+                <constraint firstItem="9aw-yR-kGU" firstAttribute="leading" secondItem="x4X-Gg-f8T" secondAttribute="leading" constant="8" id="5OZ-nW-D51"/>
+                <constraint firstItem="17B-wo-TOR" firstAttribute="width" secondItem="4Dw-Ix-7lQ" secondAttribute="width" id="9K4-FL-J9e"/>
+                <constraint firstItem="bsB-4l-tJS" firstAttribute="top" secondItem="cV5-69-2wo" secondAttribute="bottom" constant="8" id="9v4-9u-xYA"/>
+                <constraint firstItem="x4X-Gg-f8T" firstAttribute="trailing" secondItem="cV5-69-2wo" secondAttribute="trailing" constant="8" id="CqA-MN-YJh"/>
+                <constraint firstItem="x4X-Gg-f8T" firstAttribute="bottom" secondItem="4Dw-Ix-7lQ" secondAttribute="bottom" id="E6a-4S-O36"/>
+                <constraint firstItem="17B-wo-TOR" firstAttribute="top" secondItem="9aw-yR-kGU" secondAttribute="bottom" constant="16" id="Khr-VH-RJf"/>
+                <constraint firstItem="4Dw-Ix-7lQ" firstAttribute="leading" secondItem="x4X-Gg-f8T" secondAttribute="leading" id="LOi-5P-PTv"/>
+                <constraint firstItem="Swh-2V-v1a" firstAttribute="centerX" secondItem="x4X-Gg-f8T" secondAttribute="centerX" id="MwV-fc-pLg"/>
+                <constraint firstItem="9aw-yR-kGU" firstAttribute="top" secondItem="bsB-4l-tJS" secondAttribute="bottom" constant="8" id="TU5-YA-Acw"/>
+                <constraint firstItem="cV5-69-2wo" firstAttribute="leading" secondItem="x4X-Gg-f8T" secondAttribute="leading" constant="8" id="V6E-ND-7hb"/>
+                <constraint firstItem="cV5-69-2wo" firstAttribute="top" secondItem="Swh-2V-v1a" secondAttribute="bottom" constant="16" id="VMb-km-Dck"/>
+                <constraint firstItem="Swh-2V-v1a" firstAttribute="top" secondItem="x4X-Gg-f8T" secondAttribute="top" constant="16" id="WSF-Wj-Dal"/>
+                <constraint firstItem="x4X-Gg-f8T" firstAttribute="trailing" secondItem="bsB-4l-tJS" secondAttribute="trailing" constant="8" id="f2S-YW-Cib"/>
+                <constraint firstItem="17B-wo-TOR" firstAttribute="height" secondItem="4Dw-Ix-7lQ" secondAttribute="height" id="kST-sf-5ku"/>
+                <constraint firstItem="17B-wo-TOR" firstAttribute="centerY" secondItem="4Dw-Ix-7lQ" secondAttribute="centerY" id="pXQ-cw-IgB"/>
+                <constraint firstItem="bsB-4l-tJS" firstAttribute="leading" secondItem="x4X-Gg-f8T" secondAttribute="leading" constant="8" id="wcb-RH-anO"/>
+            </constraints>
+            <point key="canvasLocation" x="541.60000000000002" y="119.1904047976012"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
