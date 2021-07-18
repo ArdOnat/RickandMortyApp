@@ -78,6 +78,7 @@ protocol NetworkRouter {
 
 struct NetworkLayer: NetworkRouter {
     
+    static let shared: NetworkLayer = NetworkLayer()
     static let environment : NetworkEnvironment = .production
 
     func request<T: Decodable>(_ route: EndPoint, completion: @escaping (AFResult<T>) -> ()){
