@@ -19,7 +19,7 @@ enum ApiEnvironment {
     }
 }
 
-enum NetworkEnvironmentType: String {
+enum NetworkEnvironmentType {
     case production
     case qa
     case test
