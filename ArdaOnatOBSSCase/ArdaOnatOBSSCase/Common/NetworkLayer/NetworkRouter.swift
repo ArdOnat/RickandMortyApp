@@ -74,11 +74,12 @@ enum EndPoints: EndPoint {
 }
 
 
-protocol NetworkRouter {
+protocol NetworkRouterProtocol {
     func request<T: Decodable>(_ route: EndPoint, completion: @escaping (AFResult<T>) -> ())
+    func request<T: Decodable>(requestURL: URL, completion: @escaping (AFResult<T>) -> ())
 }
 
-struct NetworkLayer: NetworkRouter {
+struct NetworkLayer: NetworkRouterProtocol {
     
     static let shared: NetworkLayer = NetworkLayer()
 
