@@ -15,13 +15,10 @@ protocol CharacterDetailServiceProtocol {
 
 final class CharacterDetailService: CharacterDetailServiceProtocol {
     func fetchEpisodeInformation(with url: String, completion: @escaping (AFResult<EpisodeResponseModel>) -> ()) {
-        guard let episodeURL = url.url else {
+        guard let episodeURL = URL(string: url) else {
             completion(.failure(.invalidURL(url: url)))
             return
         }
-        
-        AF.request(episodeURL, method: .get).validate().responseDecodable(of: EpisodeResponseModel.self) { response in
-            completion(response.result)
-        }
+        NetworkLayer.shared.request(requestURL: episodeURL, completion: completion)
     }
 }

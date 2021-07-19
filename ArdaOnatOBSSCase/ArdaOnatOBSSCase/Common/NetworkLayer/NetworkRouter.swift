@@ -92,6 +92,12 @@ struct NetworkLayer: NetworkRouter {
         }
     }
     
+    func request<T: Decodable>(requestURL: URL, completion: @escaping (AFResult<T>) -> ()){
+        AF.request(requestURL).validate().responseDecodable(of: T.self) { response in
+            completion(response.result)
+        }
+    }
+    
     fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
         var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
         request.httpMethod = route.httpMethod.rawValue
