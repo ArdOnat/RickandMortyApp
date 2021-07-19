@@ -43,6 +43,7 @@
 		4C846E9F2656486C004DB123 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C846E9E2656486C004DB123 /* Assets.xcassets */; };
 		4C846EA22656486C004DB123 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C846EA02656486C004DB123 /* LaunchScreen.storyboard */; };
 		4C846EAD2656486C004DB123 /* ArdaOnatOBSSCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C846EAC2656486C004DB123 /* ArdaOnatOBSSCaseTests.swift */; };
+		4C93C81026A441620081F622 /* ApiEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93C80F26A441620081F622 /* ApiEnvironment.swift */; };
 		4CFBF547265A6B7B00C48A95 /* CharacterListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBF53A265A6B7B00C48A95 /* CharacterListInteractorTests.swift */; };
 		4CFBF548265A6B7B00C48A95 /* FakeCharacterListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBF53B265A6B7B00C48A95 /* FakeCharacterListInteractor.swift */; };
 		4CFBF549265A6B7B00C48A95 /* CharacterListRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBF53C265A6B7B00C48A95 /* CharacterListRepositoryTests.swift */; };
@@ -113,6 +114,7 @@
 		4C846EAE2656486C004DB123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C846EB72656486C004DB123 /* ArdaOnatOBSSCaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArdaOnatOBSSCaseUITests.swift; sourceTree = "<group>"; };
 		4C846EB92656486C004DB123 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C93C80F26A441620081F622 /* ApiEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEnvironment.swift; sourceTree = "<group>"; };
 		4CFBF53A265A6B7B00C48A95 /* CharacterListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractorTests.swift; sourceTree = "<group>"; };
 		4CFBF53B265A6B7B00C48A95 /* FakeCharacterListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCharacterListInteractor.swift; sourceTree = "<group>"; };
 		4CFBF53C265A6B7B00C48A95 /* CharacterListRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListRepositoryTests.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				4C65015226A324E800DBBAC5 /* HTTPTask.swift */,
 				4C65015426A325A900DBBAC5 /* NetworkError.swift */,
 				4C65015726A325C500DBBAC5 /* ParameterEncoder.swift */,
+				4C93C80F26A441620081F622 /* ApiEnvironment.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 			files = (
 				4C65015326A324E800DBBAC5 /* HTTPTask.swift in Sources */,
 				4C65015526A325A900DBBAC5 /* NetworkError.swift in Sources */,
+				4C93C81026A441620081F622 /* ApiEnvironment.swift in Sources */,
 				4C696EB226565A9200A3F0A8 /* CharacterListResponseModel.swift in Sources */,
 				4C696E6C26564B5500A3F0A8 /* CharacterListPresenter.swift in Sources */,
 				4C696E8426564B6500A3F0A8 /* CharacterDetailService.swift in Sources */,

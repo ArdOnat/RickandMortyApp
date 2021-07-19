@@ -15,20 +15,18 @@ protocol EndPoint {
     var baseURL: URL { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
-    var task: HTTPTask { get }
-    var headers: HTTPHeaders? { get }
-}
-
-enum NetworkEnvironment {
-    case production
+    var urlParameters: Parameters? { get }
+    var bodyParameters: Parameters? { get }
+    var httpHeaders: HTTPHeaders? { get }
 }
 
 enum EndPoints: EndPoint {
     case fetchCharacters(page: Int, searchTerm: String?, status: CharacterStatus?)
     
     var environmentBaseURL : String {
-        switch NetworkLayer.environment {
-        case .production: return "https://rickandmortyapi.com/api/"
+        //TODO: Get environment
+        switch self {
+            case .fetchCharacters(_, _, _): return ApiEnvironment.rickAndMortyApi(environmentType: .production).baseURL
         }
     }
     
@@ -48,11 +46,10 @@ enum EndPoints: EndPoint {
         return .get
     }
     
-    var task: HTTPTask {
+    var urlParameters: Parameters? {
         switch self {
         case .fetchCharacters(let page, let searchTerm, let status):
-            var urlParameters = [String: Any]()
-            
+            var urlParameters: Parameters = Parameters()
             urlParameters["page"] = page
             
             if let searchTerm = searchTerm {
@@ -62,11 +59,16 @@ enum EndPoints: EndPoint {
             if let status = status {
                 urlParameters["status"] = status.parameterValue
             }
-            return .requestParamaters(urlParameters: urlParameters)
+            
+            return urlParameters
         }
     }
     
-    var headers: HTTPHeaders? {
+    var bodyParameters: Parameters? {
+        return nil
+    }
+    
+    var httpHeaders: HTTPHeaders? {
         return nil
     }
 }
@@ -79,7 +81,6 @@ protocol NetworkRouter {
 struct NetworkLayer: NetworkRouter {
     
     static let shared: NetworkLayer = NetworkLayer()
-    static let environment : NetworkEnvironment = .production
 
     func request<T: Decodable>(_ route: EndPoint, completion: @escaping (AFResult<T>) -> ()){
         guard let request = try? self.buildRequest(from: route) else {
@@ -94,18 +95,12 @@ struct NetworkLayer: NetworkRouter {
     fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
         var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
         request.httpMethod = route.httpMethod.rawValue
-        
+       
         do {
-            switch route.task {
-            case .request:
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            case .requestParamaters(let bodyParameters, let urlParameters):
-                try self.configureParameters(bodyParameters: bodyParameters, urlParameters: urlParameters, request: &request)
-                
-            case .requestParametersAndHeaders(bodyParameters: let bodyParameters, urlParameters: let urlParameters, let additionalHeaders):
+            if let additionalHeaders = route.httpHeaders {
                 self.addAdditionalHeaders(additionalHeaders, request: &request)
-                try self.configureParameters(bodyParameters: bodyParameters, urlParameters: urlParameters, request: &request)
             }
+            try self.configureParameters(bodyParameters: route.bodyParameters, urlParameters: route.urlParameters, request: &request)
             return request
         } catch {
             throw error
