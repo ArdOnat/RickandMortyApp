@@ -11,7 +11,7 @@ import Foundation
 typealias HTTPHeaders = [String: String]
 typealias Parameters = [String: Any]
 
-protocol EndPoint {
+protocol Request {
     var baseURL: URL { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
@@ -20,7 +20,7 @@ protocol EndPoint {
     var httpHeaders: HTTPHeaders? { get }
 }
 
-enum EndPoints: EndPoint {
+enum ServiceRequest: Request {
     case fetchCharacters(page: Int, searchTerm: String?, status: CharacterStatus?)
     
     var environmentBaseURL : String {
@@ -75,16 +75,22 @@ enum EndPoints: EndPoint {
 
 
 protocol NetworkRouterProtocol {
-    func request<T: Decodable>(_ route: EndPoint, completion: @escaping (AFResult<T>) -> ())
-    func request<T: Decodable>(requestURL: URL, completion: @escaping (AFResult<T>) -> ())
+    func request<T: Decodable>(_ request: Request, queue: DispatchQueue, completion: @escaping (AFResult<T>) -> ())
+    func request<T: Decodable>(requestURL: URL, queue: DispatchQueue, completion: @escaping (AFResult<T>) -> ())
+    func requestJSON<T: Decodable>(_ request: Request, queue: DispatchQueue, completion: @escaping (AFResult<T>) -> ())
 }
 
 struct NetworkLayer: NetworkRouterProtocol {
     
     static let shared: NetworkLayer = NetworkLayer()
-
-    func request<T: Decodable>(_ route: EndPoint, completion: @escaping (AFResult<T>) -> ()){
-        guard let request = try? self.buildRequest(from: route) else {
+    
+    /// Function to make a request with EndPoint parameter.
+    /// - Parameters:
+    ///   - request: Request object  that includes values that are needed to make a request  such as url, parameters, headers.
+    ///   - queue: Parameter for making concurrent requests. Default value is set as main thread.
+    ///   - completion: Completion block that will be executed after request is completed. Success failure cases of the service will be handled in this completion block.
+    func request<T: Decodable>(_ request: Request, queue: DispatchQueue = DispatchQueue.main, completion: @escaping (AFResult<T>) -> ()) {
+        guard let request = try? self.buildRequest(from: request) else {
             return completion(.failure(.explicitlyCancelled))
         }
         
@@ -93,21 +99,51 @@ struct NetworkLayer: NetworkRouterProtocol {
         }
     }
     
-    func request<T: Decodable>(requestURL: URL, completion: @escaping (AFResult<T>) -> ()){
+    /// Function to make a request with full request URL.
+    /// - Parameters:
+    ///   - requestURL: Full request URL.
+    ///   - queue: Parameter for making concurrent requests. Default value is set as main thread.
+    ///   - completion: Completion block that will be executed after request is completed. Success failure cases of the service will be handled in this completion block.
+    func request<T: Decodable>(requestURL: URL, queue: DispatchQueue = DispatchQueue.main, completion: @escaping (AFResult<T>) -> ()) {
         AF.request(requestURL).validate().responseDecodable(of: T.self) { response in
             completion(response.result)
         }
     }
     
-    fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
-        var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
-        request.httpMethod = route.httpMethod.rawValue
+    /// Function to make request and get a json response that needs to be dcoded to the generic type T.
+    /// - Parameters:
+    ///   - request: Request object  that includes values that are needed to make a request  such as url, parameters, headers.
+    ///   - queue: Parameter for making concurrent requests. Default value is set as main thread.
+    ///   - completion: Completion block that will be executed after request is completed. Success failure cases of the service will be handled in this completion block.
+    func requestJSON<T: Decodable>(_ request: Request, queue: DispatchQueue = DispatchQueue.main, completion: @escaping (AFResult<T>) -> ()) {
+        guard let request = try? self.buildRequest(from: request) else {
+            return completion(.failure(.explicitlyCancelled))
+        }
+        
+        AF.request(request).validate().response(queue: queue) { response in
+            switch response.result {
+                case .success(let json):
+                    guard let json = json, let data = try? JSONDecoder().decode(T.self, from: json) else {
+                        completion(.failure(.responseSerializationFailed(reason: .inputDataNilOrZeroLength)))
+                        return
+                    }
+                    completion(.success(data))
+
+                case .failure(let error):
+                    completion(.failure(error))
+            }
+        }
+    }
+    
+    fileprivate func buildRequest(from requestToMake: Request) throws -> URLRequest {
+        var request = URLRequest(url: requestToMake.baseURL.appendingPathComponent(requestToMake.path), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
+        request.httpMethod = requestToMake.httpMethod.rawValue
        
         do {
-            if let additionalHeaders = route.httpHeaders {
+            if let additionalHeaders = requestToMake.httpHeaders {
                 self.addAdditionalHeaders(additionalHeaders, request: &request)
             }
-            try self.configureParameters(bodyParameters: route.bodyParameters, urlParameters: route.urlParameters, request: &request)
+            try self.configureParameters(bodyParameters: requestToMake.bodyParameters, urlParameters: requestToMake.urlParameters, request: &request)
             return request
         } catch {
             throw error

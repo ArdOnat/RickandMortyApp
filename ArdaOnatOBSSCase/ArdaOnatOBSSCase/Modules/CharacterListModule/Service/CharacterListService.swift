@@ -34,6 +34,6 @@ final class CharacterListService: CharacterListServiceProtocol {
     }
     
     func fetchCharacters(with page: Int, searchTerm: String?, status: CharacterStatus?, completion: @escaping (AFResult<CharacterListResponseModel>) -> ()) {
-        NetworkLayer.shared.request(EndPoints.fetchCharacters(page: page, searchTerm: searchTerm, status: status), completion: completion)
+        NetworkLayer.shared.request(ServiceRequest.fetchCharacters(page: page, searchTerm: searchTerm, status: status), completion: completion)
     }
 }
