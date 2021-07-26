@@ -10,11 +10,12 @@ enum ApiEnvironment {
     
     var baseURL: String {
         switch self {
-        case .rickAndMortyApi(let environmentType):
-            switch environmentType {
-            case .production, .qa, .test:
-                return "https://rickandmortyapi.com/api/"
-            }
+        case .rickAndMortyApi(.production):
+            return "https://rickandmortyapi.com/api/"
+        case .rickAndMortyApi(.qa):
+            return "https://rickandmortyapi.com/api/"
+        case .rickAndMortyApi(.test):
+            return "https://rickandmortyapi.com/api/"
         }
     }
 }
