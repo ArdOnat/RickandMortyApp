@@ -177,6 +177,14 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		4C58DECE26B8105600C61F3E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4C93C80F26A441620081F622 /* ApiEnvironment.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		4C609D022657E12A00FDEB70 /* ModuleBuilder */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,10 +247,10 @@
 		4C65014D26A324AA00DBBAC5 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4C58DECE26B8105600C61F3E /* App */,
 				4C65014B26A3235300DBBAC5 /* NetworkRouter.swift */,
 				4C65015426A325A900DBBAC5 /* NetworkError.swift */,
 				4C65015726A325C500DBBAC5 /* ParameterEncoder.swift */,
-				4C93C80F26A441620081F622 /* ApiEnvironment.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";

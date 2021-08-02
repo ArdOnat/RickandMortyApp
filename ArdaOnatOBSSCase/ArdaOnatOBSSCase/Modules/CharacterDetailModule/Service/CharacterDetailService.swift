@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol CharacterDetailServiceProtocol {
-    func fetchEpisodeInformation(with url: String, completion: @escaping (AFResult<EpisodeResponseModel>) -> ())
+    func fetchEpisodeInformation(with url: String, completion: @escaping (Result<EpisodeResponseModel, NetworkError>) -> ())
 }
 
 final class CharacterDetailService: CharacterDetailServiceProtocol {
-    func fetchEpisodeInformation(with url: String, completion: @escaping (AFResult<EpisodeResponseModel>) -> ()) {
+    func fetchEpisodeInformation(with url: String, completion: @escaping (Result<EpisodeResponseModel, NetworkError>) -> ()) {
         guard let episodeURL = URL(string: url) else {
-            completion(.failure(.invalidURL(url: url)))
+            completion(.failure(.missingURL))
             return
         }
         NetworkLayer.shared.request(requestURL: episodeURL, completion: completion)
