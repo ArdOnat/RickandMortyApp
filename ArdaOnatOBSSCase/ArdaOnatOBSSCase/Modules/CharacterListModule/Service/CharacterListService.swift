@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AONetworkLayer
 
 enum CharacterStatus: String {
     case Alive

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C09B8C526BD72410073885C /* AONetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4C09B8C426BD72410073885C /* AONetworkLayer */; };
 		4C3AD60A26592B0A00A7B088 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3AD60926592B0A00A7B088 /* String+URL.swift */; };
 		4C3AD612265949F800A7B088 /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3AD611265949F800A7B088 /* UIViewController+Toast.swift */; };
 		4C5317C9265672800047EC54 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5317C8265672800047EC54 /* CharacterListViewModel.swift */; };
@@ -17,9 +18,6 @@
 		4C609D052657E14900FDEB70 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C609D042657E14900FDEB70 /* CharacterDetailViewModel.swift */; };
 		4C609D1A2657E34900FDEB70 /* CharacterDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C609D182657E34900FDEB70 /* CharacterDetailViewController.xib */; };
 		4C609D222657EB0800FDEB70 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C609D212657EB0800FDEB70 /* CharacterDetailViewController.swift */; };
-		4C65014C26A3235300DBBAC5 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65014B26A3235300DBBAC5 /* NetworkRouter.swift */; };
-		4C65015526A325A900DBBAC5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65015426A325A900DBBAC5 /* NetworkError.swift */; };
-		4C65015826A325C500DBBAC5 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65015726A325C500DBBAC5 /* ParameterEncoder.swift */; };
 		4C696E6B26564B5500A3F0A8 /* CharacterListModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C696E6326564B5500A3F0A8 /* CharacterListModuleBuilder.swift */; };
 		4C696E6C26564B5500A3F0A8 /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C696E6426564B5500A3F0A8 /* CharacterListPresenter.swift */; };
 		4C696E6D26564B5500A3F0A8 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C696E6526564B5500A3F0A8 /* CharacterListViewController.swift */; };
@@ -82,9 +80,6 @@
 		4C609D042657E14900FDEB70 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		4C609D182657E34900FDEB70 /* CharacterDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailViewController.xib; sourceTree = "<group>"; };
 		4C609D212657EB0800FDEB70 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
-		4C65014B26A3235300DBBAC5 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
-		4C65015426A325A900DBBAC5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		4C65015726A325C500DBBAC5 /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
 		4C696E6326564B5500A3F0A8 /* CharacterListModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListModuleBuilder.swift; sourceTree = "<group>"; };
 		4C696E6426564B5500A3F0A8 /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
 		4C696E6526564B5500A3F0A8 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C696EBD26565D4700A3F0A8 /* Alamofire in Frameworks */,
+				4C09B8C526BD72410073885C /* AONetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				4C58DECE26B8105600C61F3E /* App */,
-				4C65014B26A3235300DBBAC5 /* NetworkRouter.swift */,
-				4C65015426A325A900DBBAC5 /* NetworkError.swift */,
-				4C65015726A325C500DBBAC5 /* ParameterEncoder.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -511,6 +504,7 @@
 			name = ArdaOnatOBSSCase;
 			packageProductDependencies = (
 				4C696EBC26565D4700A3F0A8 /* Alamofire */,
+				4C09B8C426BD72410073885C /* AONetworkLayer */,
 			);
 			productName = ArdaOnatOBSSCase;
 			productReference = 4C846E922656486B004DB123 /* ArdaOnatOBSSCase.app */;
@@ -563,6 +557,7 @@
 			mainGroup = 4C846E892656486B004DB123;
 			packageReferences = (
 				4C696EBB26565D4700A3F0A8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4C09B8C326BD72410073885C /* XCRemoteSwiftPackageReference "AONetworkLayer" */,
 			);
 			productRefGroup = 4C846E932656486B004DB123 /* Products */;
 			projectDirPath = "";
@@ -603,7 +598,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C65015526A325A900DBBAC5 /* NetworkError.swift in Sources */,
 				4C93C81026A441620081F622 /* ApiEnvironment.swift in Sources */,
 				4C696EB226565A9200A3F0A8 /* CharacterListResponseModel.swift in Sources */,
 				4C696E6C26564B5500A3F0A8 /* CharacterListPresenter.swift in Sources */,
@@ -613,14 +607,12 @@
 				4C696E6F26564B5500A3F0A8 /* CharacterListInteractor.swift in Sources */,
 				4C696E8126564B6500A3F0A8 /* CharacterDetailRepository.swift in Sources */,
 				4C696E7F26564B6500A3F0A8 /* CharacterDetailPresenter.swift in Sources */,
-				4C65014C26A3235300DBBAC5 /* NetworkRouter.swift in Sources */,
 				4C696E7E26564B6500A3F0A8 /* CharacterDetailModuleBuilder.swift in Sources */,
 				4C696E6E26564B5500A3F0A8 /* CharacterListRepository.swift in Sources */,
 				4C3AD612265949F800A7B088 /* UIViewController+Toast.swift in Sources */,
 				4C5317C9265672800047EC54 /* CharacterListViewModel.swift in Sources */,
 				4C696E6B26564B5500A3F0A8 /* CharacterListModuleBuilder.swift in Sources */,
 				4C696E7226564B5500A3F0A8 /* CharacterListWireframe.swift in Sources */,
-				4C65015826A325C500DBBAC5 /* ParameterEncoder.swift in Sources */,
 				4C696E6D26564B5500A3F0A8 /* CharacterListViewController.swift in Sources */,
 				4C5317DC265689690047EC54 /* CharacterListCollectionViewCell.swift in Sources */,
 				4C846E962656486B004DB123 /* AppDelegate.swift in Sources */,
@@ -908,6 +900,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4C09B8C326BD72410073885C /* XCRemoteSwiftPackageReference "AONetworkLayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArdOnat/AONetworkLayer.git";
+			requirement = {
+				kind = revision;
+				revision = 0f1b65f01a0cc17ccdc87656ae4c8274c1373d85;
+			};
+		};
 		4C696EBB26565D4700A3F0A8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -919,6 +919,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4C09B8C426BD72410073885C /* AONetworkLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C09B8C326BD72410073885C /* XCRemoteSwiftPackageReference "AONetworkLayer" */;
+			productName = AONetworkLayer;
+		};
 		4C696EBC26565D4700A3F0A8 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C696EBB26565D4700A3F0A8 /* XCRemoteSwiftPackageReference "Alamofire" */;
