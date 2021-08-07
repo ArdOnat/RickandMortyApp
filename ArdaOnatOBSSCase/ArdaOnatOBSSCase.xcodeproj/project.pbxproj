@@ -904,8 +904,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ArdOnat/AONetworkLayer.git";
 			requirement = {
-				kind = revision;
-				revision = 0f1b65f01a0cc17ccdc87656ae4c8274c1373d85;
+				branch = main;
+				kind = branch;
 			};
 		};
 		4C696EBB26565D4700A3F0A8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
