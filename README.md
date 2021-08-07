@@ -1,1 +1,1 @@
-ArdaOnatOBSSCase
+RickAndMortyApplication.
