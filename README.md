@@ -13,3 +13,6 @@ An iOS application that allows to search across Rick and Morty cartoon's(https:/
 
 
 ![Simulator Screen Shot - iPod touch (7th generation) - 2021-08-07 at 15 00 07](https://user-images.githubusercontent.com/37045606/128599435-82f9854e-fc76-42ea-83db-ef05dd7731db.png)
+
+
+![Simulator Screen Shot - iPod touch (7th generation) - 2021-08-07 at 15 00 56](https://user-images.githubusercontent.com/37045606/128599453-4fbe9801-86a7-4605-a880-c2377a8dac43.png)
