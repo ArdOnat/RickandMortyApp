@@ -109,9 +109,7 @@ final class CharacterListViewController: UIViewController {
     private func fetchCharacters(shouldResetData: Bool) {
         presenter.fetchCharacters(searchTerm: self.searchTerm, status: self.selectedStatus, shouldResetData: shouldResetData)
         
-        guard shouldResetData,
-              let characterCount = presenter.viewModel?.characterCount,
-              characterCount != 0 else { return }
+        guard shouldResetData else { return }
         listTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         gridCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
