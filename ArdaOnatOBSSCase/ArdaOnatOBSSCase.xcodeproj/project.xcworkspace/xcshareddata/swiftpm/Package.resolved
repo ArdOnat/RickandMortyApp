@@ -14,8 +14,8 @@
         "package": "AONetworkLayer",
         "repositoryURL": "https://github.com/ArdOnat/AONetworkLayer.git",
         "state": {
-          "branch": null,
-          "revision": "f38ea5431df3f628e9bce9971beae56481576cb3",
+          "branch": "main",
+          "revision": "6037d1d5dfe672170ee60f54a79e326a8407f198",
           "version": null
         }
       }
