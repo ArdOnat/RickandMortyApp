@@ -26,15 +26,14 @@ enum CharacterStatus: String {
 enum CharacterListRequest: Request {
     case fetchCharacters(page: Int, searchTerm: String?, status: CharacterStatus?)
     
-    var environmentBaseURL : String {
-        //TODO: Get environment
+    var apiEnvironment : ApiEnvironmentProtocol {
         switch self {
-            case .fetchCharacters(_, _, _): return ApiEnvironment.rickAndMortyApi(environmentType: .production).baseURL
+        case .fetchCharacters(_, _, _): return RickAndMortyApi(RickAndMortyNetworkEnvironment.prod)
         }
     }
     
     var baseURL: URL {
-        guard let url = URL(string: environmentBaseURL) else { fatalError("baseURL could not be configured.") }
+        guard let url = URL(string: apiEnvironment.baseURL) else { fatalError("baseURL could not be configured.") }
         return url
     }
     
@@ -46,7 +45,7 @@ enum CharacterListRequest: Request {
     }
     
     var httpMethod: HTTPMethods {
-        return .GET
+        return HTTPMethods("GET")
     }
     
     var urlParameters: Parameters? {

@@ -5,23 +5,28 @@
 //  Created by Arda Onat on 18.07.2021.
 //
 
-enum ApiEnvironment {
-    case rickAndMortyApi(environmentType: NetworkEnvironmentType)
+import AONetworkLayer
+
+struct RickAndMortyApi: ApiEnvironmentProtocol {
+    var environmentType: NetworkEnvironmentProtocol
     
-    var baseURL: String {
-        switch self {
-        case .rickAndMortyApi(.production):
-            return "https://rickandmortyapi.com/api/"
-        case .rickAndMortyApi(.qa):
-            return "https://rickandmortyapi.com/api/"
-        case .rickAndMortyApi(.test):
-            return "https://rickandmortyapi.com/api/"
-        }
+    init(_ environmentType: NetworkEnvironmentProtocol) {
+        self.environmentType = environmentType
     }
 }
 
-enum NetworkEnvironmentType {
-    case production
+enum RickAndMortyNetworkEnvironment: NetworkEnvironmentProtocol {
+    case prod
     case qa
     case test
+    case custom(environmentURL: String)
+    
+    var baseURL: String {
+        switch self {
+        case .prod: return "https://rickandmortyapi.com/api/"
+        case .qa: return "https://rickandmortyapi.com/api/"
+        case .test: return "https://rickandmortyapi.com/api/"
+        case .custom(let environmentURL): return environmentURL
+        }
+    }
 }
